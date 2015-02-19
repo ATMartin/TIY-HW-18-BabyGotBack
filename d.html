@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Linkr</title>
+  <style>
+    body {
+      height: 100%;
+      width: 100%;
+    }
+    .col-left,
+    .col-middle,
+    .col-right {
+      text-align: center;
+      vertical-align: top;
+      display: inline-block;
+      width: 30%;
+      height: 500px;
+      overflow: scroll;
+      padding-top: 20%;
+    }
+    .col-left {
+      border-right: 1px solid gray;
+    }
+    .col-right {
+      border-left: 1px solid gray;
+    }
+    .tag {
+      padding: 5px;
+      background-color: #ddd;
+      border-radius: 25%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="col-left link-input">
+    <form class="input-link">
+      <input type="text" class="link-title" placeholder="title"><br>
+      <input type="text" class="link-url" placeholder="address"><br>
+      <input type="text" class="link-tags" placeholder="tag(s)"><br>
+      <input type="submit">
+    </form>
+  </div>
+  <div class="col-middle links">
+    <h2>Links</h2>
+    <ul class="link-bucket">
+    </ul>
+  </div>
+  <div class="col-right">
+    <h2>Tags</h2>
+    <div class="tags"></div>
+    <br>
+    <a href="#">*clear filter*</a>
+  </div>
+  
+  <script type="text/template" data-template="bookmark">
+    <li class="bookmark">[ <a href="<%- url %>"><%- title %></a> ]( <%- url %> )</li>
+  </script>
+
+  <script type="text/template" data-template="tag">
+    <% tags.forEach(function(tag) { %>
+      <div class="tag"><a href="#tag/<%- tag %>"><%- tag %></a></div>
+    <% }) %>
+  </script>
+
+
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/backbone/backbone.js"></script>
+  <script src="d.js"></script>
+</body>
+</html>
